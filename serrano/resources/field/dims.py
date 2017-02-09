@@ -39,7 +39,7 @@ class FieldDimensions(FieldBase):
 
         tree_field = DataField(pk='{0}:{1}'.format(params.get('tree'), pk),
                                app_name=opts.app_label,
-                               model_name=opts.module_name,
+                               model_name=opts.model_name,
                                field_name=opts.pk.name)
 
         # This will eventually make its way in the parametizer, but lists

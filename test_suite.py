@@ -13,9 +13,10 @@ apps = sys.argv[1:]
 
 if not apps:
     apps = [
-        'resources',
-        'forms',
-        'base',
+        'tests.cases.resources.tests',
+        'tests.cases.forms.tests',
+        'tests.cases.base.tests',
+        'tests.cases.sets.tests',
     ]
 
 management.call_command('test', *apps, interactive=False)

@@ -39,6 +39,9 @@ class Employee(models.Model):
     office = models.ForeignKey(Office)
     is_manager = models.NullBooleanField(default=False)
 
+    class Meta:
+        db_table = 'tests_employee'
+
 
 class Meeting(models.Model):
     attendees = models.ManyToManyField(Employee)

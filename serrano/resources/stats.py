@@ -24,7 +24,7 @@ def get_count(request, model, refresh, processor, context):
     queryset = processor.get_queryset(request=request)
 
     # Get count from cache or database
-    label = ':'.join([opts.app_label, opts.module_name, 'count'])
+    label = ':'.join([opts.app_label, opts.model_name, 'count'])
     key = cache_key(label, kwargs={'queryset': queryset})
 
     cache = get_cache(avocado_settings.DATA_CACHE)
