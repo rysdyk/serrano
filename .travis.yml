@@ -10,6 +10,7 @@ env:
     - DJANGO=1.5.12 TEST_DATABASE_NAME=serrano TEST_DATABASE_USER=postgres
     - DJANGO=1.6.10 TEST_DATABASE_NAME=serrano TEST_DATABASE_USER=postgres
     - DJANGO=1.7.10 TEST_DATABASE_NAME=serrano TEST_DATABASE_USER=postgres
+    - DJANGO=1.8.17 TEST_DATABASE_NAME=serrano TEST_DATABASE_USER=postgres
 
 addons:
     postgresql: "9.3"
