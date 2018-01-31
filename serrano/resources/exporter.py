@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from modeltree.tree import MODELTREE_DEFAULT_ALIAS, trees
@@ -107,12 +107,11 @@ exporter_resource = ExporterResource()
 exporter_root_resource = ExporterRootResource()
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', exporter_root_resource, name='exporter'),
     url(r'^(?P<export_type>\w+)/$', exporter_resource, name='exporter'),
     url(r'^(?P<export_type>\w+)/(?P<page>\d+)/$', exporter_resource,
         name='exporter'),
     url(r'^(?P<export_type>\w+)/(?P<page>\d+)\.\.\.(?P<stop_page>\d+)/$',
         exporter_resource, name='exporter'),
-)
+]

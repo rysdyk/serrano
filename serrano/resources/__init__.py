@@ -1,7 +1,7 @@
 from urlparse import urlparse
 from django.utils.http import is_safe_url
 from django.conf import settings as django_settings
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login
 from restlib2.resources import Resource
@@ -151,8 +151,7 @@ class Ping(Resource):
 root_resource = Root()
 ping_resource = Ping()
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', root_resource, name='root'),
     url(r'^ping/$', ping_resource, name='ping'),
-)
+]

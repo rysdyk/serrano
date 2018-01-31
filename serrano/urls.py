@@ -1,20 +1,16 @@
-from django.conf.urls import patterns, url, include
+from django.conf.urls import url, include
 from serrano.conf import dep_supported
 
 
 # Patterns for the data namespace
-data_patterns = patterns(
-    '',
-
+data_patterns = [
     url(r'^export/', include('serrano.resources.exporter')),
 
     url(r'^preview/', include('serrano.resources.preview')),
-)
+]
 
 # Patterns for the serrano namespace
-serrano_patterns = patterns(
-    '',
-
+serrano_patterns = [
     url(r'^',
         include('serrano.resources')),
 
@@ -47,17 +43,14 @@ serrano_patterns = patterns(
 
     url(r'^views/',
         include('serrano.resources.view', namespace='views')),
-)
+]
 
 if dep_supported('objectset'):
     # Patterns for the 'sets' namespace
-    serrano_patterns += patterns(
-        '',
-        url(r'^sets/', include('serrano.resources.sets', namespace='sets'))
-    )
+    serrano_patterns.append(
+        url(r'^sets/', include('serrano.resources.sets', namespace='sets')))
 
 # Exported patterns
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^', include(serrano_patterns, namespace='serrano'))
-)
+]

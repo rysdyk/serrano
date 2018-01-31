@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from .base import FieldResource, FieldsResource
 from .values import FieldValues
 from .stats import FieldStats
@@ -13,8 +13,7 @@ field_dist_resource = FieldDistribution()
 field_dims_resource = FieldDimensions()
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', fields_resource, name='fields'),
     url(r'^(?P<pk>\d+)/$', field_resource, name='field'),
     url(r'^(?P<pk>\d+)/values/$', field_values_resource, name='field-values'),
@@ -23,4 +22,4 @@ urlpatterns = patterns(
         name='field-distribution'),
     url(r'^(?P<pk>\d+)/dims/$', field_dims_resource,
         name='field-dimensions'),
-)
+]

@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.views.decorators.cache import never_cache
 
 from avocado.models import DataQuery
@@ -31,9 +31,7 @@ revision_for_object_resource = never_cache(ObjectRevisionResource(
 
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
-
+urlpatterns = [
     url(
         r'^$',
         active_resource,
@@ -144,4 +142,4 @@ urlpatterns = patterns(
         revision_for_object_resource,
         name='revision_for_object'
     ),
-)
+]

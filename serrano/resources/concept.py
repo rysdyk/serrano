@@ -1,7 +1,7 @@
 import logging
 import functools
 from django.db.models import Q
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from preserialize.serialize import serialize
 from restlib2.http import codes
 from restlib2.params import Parametizer, BoolParam, StrParam, IntParam
@@ -257,8 +257,7 @@ concept_resource = ConceptResource()
 concepts_resource = ConceptsResource()
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', concepts_resource, name='concepts'),
     url(r'^(?P<pk>\d+)/$', concept_resource, name='concept'),
-)
+]

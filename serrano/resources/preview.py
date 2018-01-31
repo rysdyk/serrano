@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.http import Http404
 from modeltree.tree import MODELTREE_DEFAULT_ALIAS, trees
 from restlib2.params import Parametizer, IntParam, StrParam
@@ -67,8 +67,7 @@ class PreviewResource(BaseResource):
 preview_resource = PreviewResource()
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^$',
         preview_resource,
@@ -84,4 +83,4 @@ urlpatterns = patterns(
         preview_resource,
         name='preview'
     ),
-)
+]

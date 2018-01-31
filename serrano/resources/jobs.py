@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.http import Http404
 
 from avocado.async import utils
@@ -105,8 +105,7 @@ single_resource = JobResource()
 result_resource = JobResultResource()
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^(?P<job_uuid>[-\w]+)/$',
         single_resource,
@@ -117,4 +116,4 @@ urlpatterns = patterns(
         result_resource,
         name='result'
     ),
-)
+]

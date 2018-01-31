@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
@@ -51,8 +51,7 @@ exporter_resource = AsyncExporterResource()
 exporter_root_resource = ExporterRootResource()
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', exporter_root_resource, name='exporter'),
     url(
         r'^(?P<export_type>\w+)/$',
@@ -69,4 +68,4 @@ urlpatterns = patterns(
         exporter_resource,
         name='exporter'
     ),
-)
+]

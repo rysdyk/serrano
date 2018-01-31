@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime
 from django.conf import settings
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.views.decorators.cache import never_cache
 from restlib2.http import codes
 from restlib2.params import Parametizer, StrParam
@@ -227,8 +227,7 @@ revision_for_object_resource = never_cache(ObjectRevisionResource(
     object_model_base_uri='serrano:views'))
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', active_resource, name='active'),
 
     # Endpoints for specific views
@@ -245,4 +244,4 @@ urlpatterns = patterns(
         name='revisions_for_object'),
     url(r'^(?P<object_pk>\d+)/revisions/(?P<revision_pk>\d+)/$',
         revision_for_object_resource, name='revision_for_object'),
-)
+]

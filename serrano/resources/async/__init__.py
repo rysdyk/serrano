@@ -1,7 +1,6 @@
-from django.conf.urls import include, patterns, url
+from django.conf.urls import include, url
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^export/',
         include('serrano.resources.async.exporter'),
@@ -14,4 +13,4 @@ urlpatterns = patterns(
         r'^queries/',
         include('serrano.resources.async.query'),
     ),
-)
+]

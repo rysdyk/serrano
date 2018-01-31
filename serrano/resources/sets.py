@@ -1,6 +1,7 @@
 from django import forms
-from django.db.models import get_model
-from django.conf.urls import url, patterns
+# from django.db.models import get_model
+from django.apps import apps
+from django.conf.urls import url
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ImproperlyConfigured
 from objectset import resources
@@ -18,7 +19,7 @@ def configure_object_set(config):
     app_name, model_name = model_label.split('.', 1)
     model_name = model_name.lower()
 
-    model = get_model(app_name, model_name)
+    model = apps.get_model(app_name, model_name)
 
     if not issubclass(model, ObjectSet):
         raise ImproperlyConfigured('Only models that subclass ObjectSet '
@@ -102,13 +103,13 @@ def configure_object_set(config):
     return options
 
 
-urlpatterns = patterns('')
+urlpatterns = []
 object_set_options = []
 
 for config in settings.OBJECT_SETS:
     options = configure_object_set(config)
     object_set_options.append(options)
-    urlpatterns += options['url_patterns']
+    urlpatterns.extend(options['url_patterns'])
 
 
 class SetsRootResource(BaseResource):
@@ -139,4 +140,4 @@ class SetsRootResource(BaseResource):
 
 sets_root_resource = SetsRootResource()
 
-urlpatterns += patterns('', url(r'^$', sets_root_resource, name='root'))
+urlpatterns.append(url(r'^$', sets_root_resource, name='root')))

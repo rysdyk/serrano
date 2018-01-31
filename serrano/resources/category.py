@@ -1,5 +1,5 @@
 import logging
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from preserialize.serialize import serialize
 from restlib2.params import Parametizer, BoolParam
 from avocado.events import usage
@@ -97,8 +97,7 @@ category_resource = CategoryResource()
 categories_resource = CategoriesResource()
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', categories_resource, name='categories'),
     url(r'^(?P<pk>\d+)/$', category_resource, name='category'),
-)
+]

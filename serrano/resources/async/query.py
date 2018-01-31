@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.decorators.cache import never_cache
@@ -52,8 +52,7 @@ class AsyncQueryResultsResource(QueryResultsResource):
 results_resource = never_cache(AsyncQueryResultsResource())
 
 # Resource endpoints
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^(?P<pk>\d+)/results/$',
         results_resource,
@@ -87,4 +86,4 @@ urlpatterns = patterns(
         {'session': True},
         name='results'
     ),
-)
+]
