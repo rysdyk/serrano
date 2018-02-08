@@ -112,8 +112,9 @@ token_generator = TokenGenerator()
 
 def get_request_token(request):
     "Attempts to retrieve a token from the request."
-    if 'token' in request.REQUEST:
-        return request.REQUEST['token']
+    # sgithens https://github.com/encode/django-rest-framework/issues/2774
+    # if 'token' in request:
+        # return request['token']
     if 'HTTP_API_TOKEN' in request.META:
         return request.META['HTTP_API_TOKEN']
     return ''

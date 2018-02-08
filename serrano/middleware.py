@@ -10,6 +10,7 @@ class SessionMiddleware(object):
 
         # Token-based authentication is attempting to be used, bypass CSRF
         # check. Allow POST requests to the root endpoint for authentication.
+        # TODO sgithens https://stackoverflow.com/questions/19581110/exception-you-cannot-access-body-after-reading-from-requests-data-stream
         if get_request_token(request) or is_preflight(request) or \
                 (request.method == 'POST' and
                  request.path == reverse('serrano:root')):
