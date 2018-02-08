@@ -140,4 +140,4 @@ class SetsRootResource(BaseResource):
 
 sets_root_resource = SetsRootResource()
 
-urlpatterns.append(url(r'^$', sets_root_resource, name='root')))
+urlpatterns.append(url(r'^$', sets_root_resource, name='root'))
