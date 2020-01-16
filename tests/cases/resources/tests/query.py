@@ -169,7 +169,7 @@ class QueriesResourceTestCase(AuthenticatedBaseTestCase):
     def test_post(self):
         # Attempt to create a new query using a POST request
         response = self.client.post('/api/queries/',
-                                    data=u'{"name":"POST Query"}',
+                                    data='{"name":"POST Query"}',
                                     content_type='application/json')
         self.assertEqual(response.status_code, codes.created)
         data = json.loads(response.content)
@@ -184,7 +184,7 @@ class QueriesResourceTestCase(AuthenticatedBaseTestCase):
         # Make a POST request with invalid JSON and make sure we get an
         # unprocessable status code back.
         response = self.client.post('/api/queries/',
-                                    data=u'{"view_json":"[~][~]"}',
+                                    data='{"view_json":"[~][~]"}',
                                     content_type='application/json')
         self.assertEqual(response.status_code, codes.unprocessable_entity)
 
@@ -420,7 +420,7 @@ class QueryResourceTestCase(AuthenticatedBaseTestCase):
 
         # Attempt to update the name via a PUT request
         response = self.client.put('/api/queries/{0}/'.format(query.pk),
-                                   data=u'{"name":"New Name"}',
+                                   data='{"name":"New Name"}',
                                    content_type='application/json')
         self.assertEqual(response.status_code, codes.ok)
 
@@ -434,12 +434,12 @@ class QueryResourceTestCase(AuthenticatedBaseTestCase):
         # Make a PUT request with invalid JSON and make sure we get an
         # unprocessable status code back.
         response = self.client.put('/api/queries/{0}/'.format(query.pk),
-                                   data=u'{"view_json":"[~][~]"}',
+                                   data='{"view_json":"[~][~]"}',
                                    content_type='application/json')
         self.assertEqual(response.status_code, codes.unprocessable_entity)
 
     def test_delete(self):
-        query_name = u'ĘƞĵôƔ ťƕîš ǫųęŕƳ'
+        query_name = 'ĘƞĵôƔ ťƕîš ǫųęŕƳ'
 
         query = DataQuery(user=self.user, name=query_name)
         query.save()
@@ -476,7 +476,7 @@ class QueryResourceTestCase(AuthenticatedBaseTestCase):
         self.assertEqual(len(mail.outbox), 1)
         # Make sure the subject is correct
         self.assertEqual(mail.outbox[0].subject,
-                         u"'{0}' has been deleted".format(query_name))
+                         "'{0}' has been deleted".format(query_name))
         # Make sure the recipient list is correct
         self.assertSequenceEqual(
             mail.outbox[0].to, ['share@example.com', '', 'share3@example.com'])

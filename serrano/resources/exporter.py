@@ -13,7 +13,7 @@ from serrano.resources.processors import EXPORTER_RESULT_PROCESSOR_NAME, \
 
 
 # Single list of all registered exporters
-EXPORT_TYPES = zip(*exporters.choices)[0]
+EXPORT_TYPES = list(zip(*exporters.choices))[0]
 
 
 class ExporterRootResource(BaseResource):

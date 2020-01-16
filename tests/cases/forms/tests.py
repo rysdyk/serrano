@@ -18,7 +18,7 @@ def retry_until_true(sleep_interval=0.1, tries=50):
 
     def wrapper(fun):
         def retry_calls(*args, **kwargs):
-            for _ in xrange(tries):
+            for _ in range(tries):
                 result = fun(*args, **kwargs)
                 if result:
                     break
@@ -328,7 +328,7 @@ class QueryFormTestCase(BaseTestCase):
                                         email='user_1@email.com')
         user.save()
 
-        message = u'ĘƞĵôƔ ťƕîš ǫųęŕƳ'
+        message = 'ĘƞĵôƔ ťƕîš ǫųęŕƳ'
         form = QueryForm(self.request, {'usernames_or_emails': 'user_1',
                                         'message': message})
 
@@ -343,4 +343,4 @@ class QueryFormTestCase(BaseTestCase):
         self.assertSequenceEqual(mail.outbox[0].to, ['user_1@email.com'])
 
         # Make sure the custom message is included in the body
-        self.assertRegexpMatches(mail.outbox[0].body, message)
+        self.assertRegex(mail.outbox[0].body, message)

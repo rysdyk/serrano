@@ -503,21 +503,21 @@ class FieldResourceTestCase(BaseTestCase):
                                                   'salary')
 
         default_content = {
-            u'size': 4,
-            u'clustered': False,
-            u'outliers': [],
-            u'data': [{
-                u'count': 3,
-                u'values': [{'label': '15000', 'value': 15000}]
+            'size': 4,
+            'clustered': False,
+            'outliers': [],
+            'data': [{
+                'count': 3,
+                'values': [{'label': '15000', 'value': 15000}]
             }, {
-                u'count': 1,
-                u'values': [{'label': '10000', 'value': 10000}]
+                'count': 1,
+                'values': [{'label': '10000', 'value': 10000}]
             }, {
-                u'count': 1,
-                u'values': [{'label': '20000', 'value': 20000}]
+                'count': 1,
+                'values': [{'label': '20000', 'value': 20000}]
             }, {
-                u'count': 1,
-                u'values': [{'label': '200000', 'value': 200000}]
+                'count': 1,
+                'values': [{'label': '200000', 'value': 200000}]
             }],
         }
 
@@ -544,11 +544,11 @@ class FieldResourceTestCase(BaseTestCase):
                                    HTTP_ACCEPT='application/json')
         self.assertEqual(response.status_code, codes.ok)
         self.assertEqual(json.loads(response.content), {
-            u'size': 1,
-            u'clustered': False,
-            u'outliers': [],
-            u'data': [{
-                u'count': 1,
-                u'values': [{'label': '15000', 'value': 15000}]
+            'size': 1,
+            'clustered': False,
+            'outliers': [],
+            'data': [{
+                'count': 1,
+                'values': [{'label': '15000', 'value': 15000}]
             }]
         })

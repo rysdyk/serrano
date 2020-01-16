@@ -221,7 +221,7 @@ class FieldValues(FieldBase, PaginatorResource):
         results = queryset.filter(lookup)
 
         value_labels = dict(results)
-        label_values = dict([(v, k) for k, v in value_labels.items()])
+        label_values = dict([(v, k) for k, v in list(value_labels.items())])
 
         for i, datum in enumerate(array):
             if array_map[i] == 'label':

@@ -26,7 +26,7 @@ def configure_object_set(config):
                                    'are supported, not {0}'
                                    .format(model_label))
 
-    default_name = unicode(model._meta.verbose_name_plural)
+    default_name = str(model._meta.verbose_name_plural)
     name = config.get('name', default_name.lower().replace(' ', ''))
     label = config.get('label', default_name.title())
 

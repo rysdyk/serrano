@@ -100,7 +100,7 @@ class TokenBackendTestCase(TestCase):
 
         # Sucessive requests to refresh session since this client supports
         # cookies.
-        for i in xrange(3):
+        for i in range(3):
             resp = self.client.get(reverse('serrano:root'),
                                    HTTP_ACCEPT='application/json')
             self.assertEqual(resp.status_code, codes.ok)

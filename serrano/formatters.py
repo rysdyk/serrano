@@ -9,7 +9,7 @@ warn('The HTMLFormatter has been deprecated and will be removed in Serrano '
 
 
 class HTMLFormatter(Formatter):
-    delimiter = u' '
+    delimiter = ' '
 
     html_map = {
         None: '<em>n/a</em>'
@@ -30,7 +30,7 @@ class HTMLFormatter(Formatter):
             elif type(value) is float:
                 tok = filters.floatformat(value)
             else:
-                tok = unicode(value)
+                tok = str(value)
             toks.append(tok)
 
         return self.delimiter.join(toks)

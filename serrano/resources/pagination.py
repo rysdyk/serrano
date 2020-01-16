@@ -68,7 +68,7 @@ class PaginatorResource(Resource):
             }
 
         if extra:
-            for key, value in extra.items():
+            for key, value in list(extra.items()):
                 # Use the original GET parameter if supplied and if the
                 # cleaned value is valid
                 if key in request.GET and value is not None and value != '':
@@ -76,7 +76,7 @@ class PaginatorResource(Resource):
 
         # Stringify parameters. Since these are the original GET params,
         # they do not need to be encoded
-        pairs = sorted(['{0}={1}'.format(k, v) for k, v in params.items()])
+        pairs = sorted(['{0}={1}'.format(k, v) for k, v in list(params.items())])
 
         # Create path string
         path_format = '{0}?{1}'.format(path, '&'.join(pairs))

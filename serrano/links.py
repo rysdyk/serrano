@@ -1,5 +1,5 @@
 from django.core.urlresolvers import reverse
-from urllib import unquote
+from urllib.parse import unquote
 
 
 def _get_link(name, link, data=None):
@@ -21,7 +21,7 @@ def _get_link(name, link, data=None):
 
     header_data = []
 
-    for key, value in data.items():
+    for key, value in list(data.items()):
         header_data.append('{0}="{1}"'.format(key, value))
 
     if header_data:
@@ -41,8 +41,8 @@ def _get_links(data):
     """
     links = []
 
-    for name, value in data.items():
-        if isinstance(value, basestring):
+    for name, value in list(data.items()):
+        if isinstance(value, str):
             links.append(_get_link(name, value))
         else:
             links.append(_get_link(name, value['link'], value['data']))
@@ -108,7 +108,7 @@ def reverse_tmpl(uri, name, params):
 
     kwargs = {}
     variables = {}
-    supported_types = (complex, float, int, long, str)
+    supported_types = (complex, float, int, int, str)
 
     # NOTE: It is known that this method will only support 10 replacements
     # for values [0-9] before there would be "collisions" when replacing but
@@ -116,7 +116,7 @@ def reverse_tmpl(uri, name, params):
     # should be safe for our uses and we can adapt this should that case ever
     # come to exist.
     param_num = 0
-    for key, type_alias in params.items():
+    for key, type_alias in list(params.items()):
         type = type_alias[0]
         alias = type_alias[1]
 
@@ -132,7 +132,7 @@ def reverse_tmpl(uri, name, params):
         param_num += 1
 
     url = reverse(name, kwargs=kwargs)
-    for val, var in variables.items():
+    for val, var in list(variables.items()):
         url = url.replace(val, var)
 
     return unquote(uri(url))

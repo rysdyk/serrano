@@ -61,7 +61,7 @@ class ViewResourceTestCase(AuthenticatedBaseTestCase):
     def test_post(self):
         # Attempt to create a new view using a POST request
         response = self.client.post('/api/views/',
-                                    data=u'{"name":"POST View"}',
+                                    data='{"name":"POST View"}',
                                     content_type='application/json')
         self.assertEqual(response.status_code, codes.created)
         data = json.loads(response.content)
@@ -76,7 +76,7 @@ class ViewResourceTestCase(AuthenticatedBaseTestCase):
         # Make a POST request with invalid JSON and make sure we get an
         # unprocessable status code back.
         response = self.client.post('/api/views/',
-                                    data=u'{"json":"[~][~]"}',
+                                    data='{"json":"[~][~]"}',
                                     content_type='application/json')
         self.assertEqual(response.status_code, codes.unprocessable_entity)
 
@@ -91,7 +91,7 @@ class ViewResourceTestCase(AuthenticatedBaseTestCase):
 
         # Attempt to update the name via a PUT request
         response = self.client.put('/api/views/{0}/'.format(view.pk),
-                                   data=u'{"name":"New Name"}',
+                                   data='{"name":"New Name"}',
                                    content_type='application/json')
         self.assertEqual(response.status_code, codes.ok)
 
@@ -105,7 +105,7 @@ class ViewResourceTestCase(AuthenticatedBaseTestCase):
         # Make a PUT request with invalid JSON and make sure we get an
         # unprocessable status code back.
         response = self.client.put('/api/views/{0}/'.format(view.pk),
-                                   data=u'{"json":"]]]"}',
+                                   data='{"json":"]]]"}',
                                    content_type='application/json')
         self.assertEqual(response.status_code, codes.unprocessable_entity)
 

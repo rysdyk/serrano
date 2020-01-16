@@ -232,7 +232,7 @@ class ContextStatsResource(ContextBase):
 
 def prune_context(cxt):
     if 'children' in cxt:
-        cxt['children'] = map(prune_context, cxt['children'])
+        cxt['children'] = list(map(prune_context, cxt['children']))
     else:
         cxt = {
             'concept': cxt.get('concept'),

@@ -65,7 +65,7 @@ class ContextResourceTestCase(AuthenticatedBaseTestCase):
         # Attempt to create a new context using a POST request.
         response = self.client.post(
             '/api/contexts/',
-            data=u'{"name":"POST Context"}',
+            data='{"name":"POST Context"}',
             content_type='application/json')
         self.assertEqual(response.status_code, codes.created)
         data = json.loads(response.content)
@@ -81,7 +81,7 @@ class ContextResourceTestCase(AuthenticatedBaseTestCase):
         # unprocessable status code back.
         response = self.client.post(
             '/api/contexts/',
-            data=u'{"json":"[~][~]"}',
+            data='{"json":"[~][~]"}',
             content_type='application/json')
         self.assertEqual(response.status_code, codes.unprocessable_entity)
 
@@ -97,7 +97,7 @@ class ContextResourceTestCase(AuthenticatedBaseTestCase):
         # Attempt to update the name via a PUT request.
         response = self.client.put(
             '/api/contexts/{0}/'.format(ctx.pk),
-            data=u'{"name":"New Name"}',
+            data='{"name":"New Name"}',
             content_type='application/json')
         self.assertEqual(response.status_code, codes.ok)
 
@@ -112,7 +112,7 @@ class ContextResourceTestCase(AuthenticatedBaseTestCase):
         # unprocessable status code back.
         response = self.client.put(
             '/api/contexts/{0}/'.format(ctx.pk),
-            data=u'{"json":"]]]"}',
+            data='{"json":"]]]"}',
             content_type='application/json')
         self.assertEqual(response.status_code, codes.unprocessable_entity)
 

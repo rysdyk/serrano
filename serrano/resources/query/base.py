@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 from datetime import datetime
 import functools
 
@@ -246,7 +246,7 @@ class QueryResource(QueryBase):
 
 def prune_context(cxt):
     if 'children' in cxt:
-        cxt['children'] = map(prune_context, cxt['children'])
+        cxt['children'] = list(map(prune_context, cxt['children']))
     else:
         cxt = {
             'concept': cxt.get('concept'),

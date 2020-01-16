@@ -1,4 +1,4 @@
-from urlparse import urlparse
+from urllib.parse import urlparse
 from django.utils.http import is_safe_url
 from django.conf import settings as django_settings
 from django.conf.urls import url
