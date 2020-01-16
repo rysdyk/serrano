@@ -1,4 +1,4 @@
-from django.utils.encoding import smart_unicode
+from django.utils.encoding import smart_text
 from restlib2.http import codes
 from restlib2.params import Parametizer, StrParam, BoolParam
 from modeltree.tree import MODELTREE_DEFAULT_ALIAS, trees
@@ -48,7 +48,7 @@ class FieldDistribution(FieldBase):
             if value in value_labels:
                 label = value_labels[value]
             else:
-                label = smart_unicode(value)
+                label = smart_text(value)
 
             result.append({
                 'value': value,

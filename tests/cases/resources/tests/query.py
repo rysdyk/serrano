@@ -550,7 +550,7 @@ class EmailTestCase(BaseTestCase):
                      email='share3@example.com')
 
         send_mail([user1.email, user2.email, user3.email], self.subject,
-                  self.message, async=False)
+                  self.message, asynchr=False)
 
         # Make sure the mail was sent
         self.assertEqual(len(mail.outbox), 1)

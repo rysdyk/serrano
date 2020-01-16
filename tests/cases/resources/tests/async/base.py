@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.http import HttpResponseRedirect
 from restlib2.http import codes
 
-from avocado.async import utils
+from avocado.asynchr import utils
 
 
 class JobTestCaseMixin(object):

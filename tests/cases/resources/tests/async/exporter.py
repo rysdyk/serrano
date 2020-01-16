@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.test import TestCase
 from restlib2.http import codes
 
-from avocado.async import utils
+from avocado.asynchr import utils
 from .base import JobTestCaseMixin
 
 

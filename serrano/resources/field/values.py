@@ -1,7 +1,7 @@
 import logging
 from django.core.urlresolvers import reverse
 from django.db.models import Q
-from django.utils.encoding import smart_unicode
+from django.utils.encoding import smart_text
 from restlib2.http import codes
 from restlib2.params import StrParam, IntParam, BoolParam
 from modeltree.tree import MODELTREE_DEFAULT_ALIAS, trees
@@ -65,7 +65,7 @@ class FieldValues(FieldBase, PaginatorResource):
 
         for value in instance.search(query, queryset=queryset):
             results.append({
-                'label': value_labels.get(value, smart_unicode(value)),
+                'label': value_labels.get(value, smart_text(value)),
                 'value': value,
             })
         return results
@@ -238,7 +238,7 @@ class FieldValues(FieldBase, PaginatorResource):
                 if valid:
                     label = value_labels[datum['value']]
                 else:
-                    label = smart_unicode(datum['value'])
+                    label = smart_text(datum['value'])
 
                 datum['valid'] = valid
                 datum['label'] = label

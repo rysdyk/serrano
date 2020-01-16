@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.http import Http404
 
-from avocado.async import utils
+from avocado.asynchr import utils
 from serrano.links import reverse_tmpl
 from serrano.resources.base import ThrottledResource
 from serrano.resources.processors import process_results

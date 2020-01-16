@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.db.models import Q, Count
-from django.utils.encoding import smart_unicode
+from django.utils.encoding import smart_text
 from restlib2.http import codes
 from restlib2.params import Parametizer, StrParam, BoolParam, IntParam
 from modeltree.tree import MODELTREE_DEFAULT_ALIAS, trees
@@ -200,7 +200,7 @@ class FieldDimensions(FieldBase):
             labeled_points.append({
                 'count': point['count'],
                 'values': [{
-                    'label': value_labels.get(value, smart_unicode(value)),
+                    'label': value_labels.get(value, smart_text(value)),
                     'value': value
                 } for value in point['values']]
             })

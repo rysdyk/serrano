@@ -2,7 +2,7 @@ import weakref
 import threading
 from multiprocessing.pool import ThreadPool
 from django.core.urlresolvers import reverse
-# from django.core.cache import get_cache TODO sgithens
+from django.core.cache import caches
 from django.conf.urls import url
 from django.views.decorators.cache import never_cache
 from restlib2.params import Parametizer, BoolParam, StrParam
@@ -27,12 +27,12 @@ def get_count(request, model, refresh, processor, context):
     label = ':'.join([opts.app_label, opts.model_name, 'count'])
     key = cache_key(label, kwargs={'queryset': queryset})
 
-    # cache = get_cache(avocado_settings.DATA_CACHE)
+    cache = caches(avocado_settings.DATA_CACHE)
 
-    # if refresh:
-    count = None
-    # else:
-        # count = cache.get(key)
+    if refresh:
+        count = None
+    else:
+        count = cache.get(key)
 
     if count is None:
         count = queryset.values('pk').distinct().count()

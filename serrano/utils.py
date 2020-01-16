@@ -7,11 +7,11 @@ def _send_mail(subject, message, sender, recipient_list, fail_silently):
     mail.send_mail(subject, message, sender, recipient_list, fail_silently)
 
 
-def send_mail(emails, subject, message, async=True, fail_silently=True):
+def send_mail(emails, subject, message, asynchr=True, fail_silently=True):
     """Send email built from 'email_title' and 'email_body' to all 'emails'
 
     'emails' is an iterable collection of email addresses to notify. Setting
-    `async` to False will block while the email is being sent. If
+    `asynchr` to False will block while the email is being sent. If
     `fail_silently` is set to False, a SMTPException will be raised if there
     is an error sending the email.
 
@@ -19,7 +19,7 @@ def send_mail(emails, subject, message, async=True, fail_silently=True):
     To avoid any issues while sending emails, validate before calling this
     method.
     """
-    if async:
+    if asynchr:
         # We pass a copy of the list of emails to the thread target to avoid it
         # going out of scope within the thread target. This was happening when
         # obtaining the the list of emails from a QuerySet of Django User
