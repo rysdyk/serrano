@@ -2,11 +2,9 @@ from warnings import warn
 from django.template import defaultfilters as filters
 from avocado.formatters import Formatter, process_multiple
 
-
-warn('The HTMLFormatter has been deprecated and will be removed in Serrano '
-     '2.5. The functionality has been moved to the default Formatter class '
-     'in Avocado.')
-
+# warn('The HTMLFormatter has been deprecated and will be removed in Serrano '
+#      '2.5. The functionality has been moved to the default Formatter class '
+#      'in Avocado.')
 
 class HTMLFormatter(Formatter):
     delimiter = ' '
