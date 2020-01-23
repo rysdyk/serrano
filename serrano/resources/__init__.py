@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 from django.utils.http import is_safe_url
 from django.conf import settings as django_settings
 from django.conf.urls import url
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from restlib2.resources import Resource
 from restlib2.http import codes

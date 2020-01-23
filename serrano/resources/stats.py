@@ -1,7 +1,7 @@
 import weakref
 import threading
 from multiprocessing.pool import ThreadPool
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.cache import caches
 from django.conf.urls import url
 from django.views.decorators.cache import never_cache

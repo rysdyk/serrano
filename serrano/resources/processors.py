@@ -4,7 +4,7 @@ except ImportError:
     from ordereddict import OrderedDict
 from datetime import datetime
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponse
 from restlib2.serializers import serializers
 

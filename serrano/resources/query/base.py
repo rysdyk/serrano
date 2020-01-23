@@ -139,7 +139,7 @@ class QueriesResource(QueryBase):
         return serialize(instance, posthook=posthook, **template)
 
     def get_queryset(self, request, **kwargs):
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             f = Q(user=request.user) | Q(shared_users__pk=request.user.pk)
         elif request.session.session_key:
             f = Q(session_key=request.session.session_key)

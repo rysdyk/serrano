@@ -1,7 +1,6 @@
 from django.conf.urls import url, include
 from serrano.conf import dep_supported
 
-
 # Patterns for the data namespace
 data_patterns = [
     url(r'^export/', include('serrano.resources.exporter')),
@@ -15,7 +14,7 @@ serrano_patterns = [
         include('serrano.resources')),
 
     url(r'^async/',
-        include('serrano.resources.async', namespace='async')),
+        include(('serrano.resources.async', 'serrano'), namespace='async')),
 
     url(r'^categories/',
         include('serrano.resources.category')),
@@ -24,10 +23,10 @@ serrano_patterns = [
         include('serrano.resources.concept')),
 
     url(r'^contexts/',
-        include('serrano.resources.context', namespace='contexts')),
+        include(('serrano.resources.context', 'serrano'), namespace='contexts')),
 
     url(r'^data/',
-        include(data_patterns, namespace='data')),
+        include((data_patterns, 'serrano'), namespace='data')),
 
     url(r'^fields/',
         include('serrano.resources.field')),
@@ -52,5 +51,5 @@ if dep_supported('objectset'):
 
 # Exported patterns
 urlpatterns = [
-    url(r'^', include(serrano_patterns, namespace='serrano'))
+    url(r'^', include((serrano_patterns, 'serrano'), namespace='serrano'))
 ]

@@ -198,7 +198,7 @@ class BaseResource(Resource):
         user = getattr(request, 'user', None)
 
         # Attempt to authenticate if a token is present
-        if not user or not user.is_authenticated():
+        if not user or not user.is_authenticated:
             token = get_request_token(request)
             user = authenticate(token=token)
 

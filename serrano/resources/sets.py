@@ -2,7 +2,7 @@ from django import forms
 # from django.db.models import get_model
 from django.apps import apps
 from django.conf.urls import url
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.exceptions import ImproperlyConfigured
 from objectset import resources
 from objectset.models import ObjectSet

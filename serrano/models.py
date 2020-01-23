@@ -18,7 +18,7 @@ class ApiTokenManager(models.Manager):
 
 class ApiToken(models.Model):
     "Token for use as authentication for API access."
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     token = models.CharField(max_length=32, editable=False)
     revoked = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)

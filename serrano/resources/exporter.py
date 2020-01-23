@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import Http404
 from modeltree.tree import MODELTREE_DEFAULT_ALIAS, trees
 from restlib2.params import Parametizer, IntParam, StrParam

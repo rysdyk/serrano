@@ -6,7 +6,7 @@ from django.conf import settings as django_settings
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse, NoReverseMatch
+from django.urls import reverse, NoReverseMatch
 from django.core.validators import validate_email
 from avocado.models import DataContext, DataView, DataQuery
 from serrano import utils

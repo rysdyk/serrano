@@ -1,9 +1,15 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from .cors import is_preflight
 from .tokens import get_request_token
 
 
 class SessionMiddleware(object):
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        return self.get_response(request)
+
     def process_request(self, request):
         if getattr(request, 'user', None) and request.user.is_authenticated():
             return

@@ -3,7 +3,7 @@ import logging
 from datetime import datetime
 from django.conf import settings
 from django.conf.urls import url
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views.decorators.cache import never_cache
 from restlib2.http import codes
 from restlib2.params import Parametizer, StrParam
@@ -66,7 +66,7 @@ class ContextBase(ThrottledResource):
     def get_queryset(self, request, **kwargs):
         "Constructs a QuerySet for this user or session."
 
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             kwargs['user'] = request.user
         elif request.session.session_key:
             kwargs['session_key'] = request.session.session_key
