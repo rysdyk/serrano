@@ -69,7 +69,7 @@ def _get_request_object(request, attrs=None, klass=None, key=None):
 
     # If an authenticated user made the request, filter by the user or
     # fallback to an active session key.
-    if getattr(request, 'user', None) and request.user.is_authenticated():
+    if getattr(request, 'user', None) and request.user.is_authenticated:
         kwargs['user'] = request.user
     else:
         # If no session has been created, this is a cookie-less user agent
@@ -158,7 +158,7 @@ def get_request_query(request, attrs=None):
 
     # If an authenticated user made the request, filter by the user or
     # fallback to an active session key.
-    if getattr(request, 'user', None) and request.user.is_authenticated():
+    if getattr(request, 'user', None) and request.user.is_authenticated:
         kwargs['user'] = request.user
     else:
         # If not session has been created, this is a cookie-less user agent
@@ -272,7 +272,7 @@ class ThrottledResource(BaseResource):
         # user id and then try the session key as a fallback. If this is an
         # authenticated request then we prepend an indicator to the request
         # id and use the authenticated limiter settings.
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             request_id = "auth:{0}".format(request.user.id)
             limit_count = self.auth_rate_limit_count
             limit_seconds = self.auth_rate_limit_seconds
