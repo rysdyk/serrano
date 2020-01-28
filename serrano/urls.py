@@ -32,22 +32,22 @@ serrano_patterns = [
         include('serrano.resources.field')),
 
     url(r'^jobs/',
-        include('serrano.resources.jobs', namespace='jobs')),
+        include(('serrano.resources.jobs', 'serrano'), namespace='jobs')),
 
     url(r'^queries/',
-        include('serrano.resources.query', namespace='queries')),
+        include(('serrano.resources.query', 'serrano'), namespace='queries')),
 
     url(r'^stats/',
-        include('serrano.resources.stats', namespace='stats')),
+        include(('serrano.resources.stats', 'serrano'), namespace='stats')),
 
     url(r'^views/',
-        include('serrano.resources.view', namespace='views')),
+        include(('serrano.resources.view', 'serrano'), namespace='views')),
 ]
 
 if dep_supported('objectset'):
     # Patterns for the 'sets' namespace
     serrano_patterns.append(
-        url(r'^sets/', include('serrano.resources.sets', namespace='sets')))
+        url(r'^sets/', include(('serrano.resources.sets', 'serrano'), namespace='sets')))
 
 # Exported patterns
 urlpatterns = [
