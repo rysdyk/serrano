@@ -11,7 +11,7 @@ class SessionMiddleware(object):
         return self.get_response(request)
 
     def process_request(self, request):
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             return
 
         # Token-based authentication is attempting to be used, bypass CSRF

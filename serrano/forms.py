@@ -29,7 +29,7 @@ class ContextForm(forms.ModelForm):
         instance = super(ContextForm, self).save(commit=False)
         request = self.request
 
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             instance.user = request.user
         else:
             instance.session_key = request.session.session_key
@@ -53,7 +53,7 @@ class ViewForm(forms.ModelForm):
         instance = super(ViewForm, self).save(commit=False)
         request = self.request
 
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             instance.user = request.user
         else:
             instance.session_key = request.session.session_key
@@ -122,7 +122,7 @@ class QueryForm(forms.ModelForm):
         instance = super(QueryForm, self).save(commit=False)
         request = self.request
 
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             instance.user = request.user
         else:
             instance.session_key = request.session.session_key

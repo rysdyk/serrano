@@ -74,7 +74,7 @@ class QueryBase(ThrottledResource):
     def get_queryset(self, request, **kwargs):
         "Constructs a QuerySet for this user or session."
 
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             kwargs['user'] = request.user
         elif request.session.session_key:
             kwargs['session_key'] = request.session.session_key
@@ -89,7 +89,7 @@ class QueryBase(ThrottledResource):
     def get_request_filters(self, request):
         filters = {}
 
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             filters['user'] = request.user
         elif request.session.session_key:
             filters['session_key'] = request.session.session_key

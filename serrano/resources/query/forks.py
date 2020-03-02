@@ -61,7 +61,7 @@ class QueryForksResource(QueryBase):
         if not getattr(request, 'user', None):
             return False
 
-        return (request.user.is_authenticated() and
+        return (request.user.is_authenticated and
                 request.user == instance.user)
 
     def _requestor_can_fork(self, request, instance):
@@ -72,7 +72,7 @@ class QueryForksResource(QueryBase):
         if instance.public:
             return True
 
-        if getattr(request, 'user', None) and request.user.is_authenticated():
+        if getattr(request, 'user', None) and request.user.is_authenticated:
             return (request.user == instance.user or
                     instance.shared_users.filter(pk=request.user.pk).exists())
 
