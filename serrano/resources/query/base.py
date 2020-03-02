@@ -26,7 +26,7 @@ DELETE_QUERY_EMAIL_BODY = """The query named '{0}' has been deleted. You are
 
 
 def query_posthook(instance, data, request):
-    if getattr(instance, 'user', None) and instance.user.is_authenticated():
+    if getattr(instance, 'user', None) and instance.user.is_authenticated:
         data['is_owner'] = instance.user == request.user
     else:
         data['is_owner'] = instance.session_key == request.session.session_key
