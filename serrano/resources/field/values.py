@@ -227,6 +227,7 @@ class FieldValues(FieldBase, PaginatorResource):
             if array_map[i] == 'label':
                 # this try/except block was added to fix
                 # searching for multiple id numbers
+
                 try:
                     v = int(datum['label'])
                 except:
@@ -235,9 +236,9 @@ class FieldValues(FieldBase, PaginatorResource):
                 valid = v in label_values
                 
                 if valid:
-                    value = label_values[datum['label']]
+                    value = label_values[v]
                 else:
-                    value = datum['label']
+                    value = v
 
                 datum['valid'] = valid
                 datum['value'] = value
